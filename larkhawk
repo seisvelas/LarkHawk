@@ -1,0 +1,16 @@
+echo "Logging into Lark..."
+if [ $(python3 checkStudents.py) != "0" ]
+then
+	echo "Student available! Sending alert"
+	racket sendAlert.rkt
+	echo "email sent!" >> log/larkhawk.log
+else
+        echo "No students found"
+	echo "no new students" >> log/larkhawk.log
+fi
+
+echo "Killing webdriver..."
+
+/usr/bin/pkill chrome
+
+echo "Done!"
