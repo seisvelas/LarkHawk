@@ -16,3 +16,7 @@ Lark is surprisingly unfriendly to scrape. If you try to just do an HTTP request
 **sendAlert.rkt** - Opens sendmail via Racket and sends an alert that an available student has been found.
 
 I wanted to do the whole thing in Lisp but Racket doesn't support Selenium, and, well, Python does. 
+
+## Note:
+
+The first alert will almost certainly go to your spam folder, so keep an eye out. If you're on Gmail just mark it as Not Spam and future updates will make it to your inbox.
