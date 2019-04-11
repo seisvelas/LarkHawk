@@ -27,7 +27,19 @@ element = WebDriverWait(driver, 20).until(
     )
 element = driver.find_element_by_id('react-app')
 
-students_num = [line for line in element.text.split("\n") if "student" in line and "available" in line and "page" not in line and len(line)<40][0].split()[0]
-print(students_num)
+students_num = None
+
+for line in element.text.split('\n'):
+    words = line.split()
+    if words[-1].lower() == "available":
+        students_num = words[0]
+
+if students_num is None:
+    f = open("log/larkhawk.log", "a+")
+    f.write("error, students not found: " + element.text)
+    f.close()
+    print(0)
+else:
+    print(students_num)
 
 driver.close()
